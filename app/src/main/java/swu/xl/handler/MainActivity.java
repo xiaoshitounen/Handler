@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 自定义的解决内存泄漏的Handler
      */
-    private class MyHandler extends Handler{
+    private static class MyHandler extends Handler{
 
         //定义弱引用实例
         private WeakReference<Activity> reference;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         //构造方法中传入所需的Activity
         public MyHandler(Activity activity) {
             //使用WeakReference弱引用持有Activity实例
-            this.reference = new WeakReference<Activity>(activity);
+            this.reference = new WeakReference<>(activity);
         }
 
         @Override
@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
             //接受消息
             switch (msg.what){
                 case MESSAGE_CODE:
-                    Toast.makeText(MainActivity.this, (String) msg.obj, Toast.LENGTH_SHORT).show();
+                    Activity main = reference.get();
+                    Toast.makeText(main, (String) msg.obj, Toast.LENGTH_SHORT).show();
                     break;
             }
         }
