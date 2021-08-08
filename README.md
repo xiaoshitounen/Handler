@@ -2,4 +2,4 @@
 
 Android：Handler
 
-博客：[有用的Handler](https://fanandjiu.com/有用的Handler/)
+博客：[有用的Handler](http://www.fanandjiu.com/article/4cad8d8.html)
